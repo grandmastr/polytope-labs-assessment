@@ -1,0 +1,25 @@
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: -0.05em;
+    overflow: hidden;
+    color: azure;
+
+    span {
+        display: inline-block;
+        animation: 1s 1 reveal ease;
+        animation-delay: calc(0.03s * var(--index, 0));
+        animation-fill-mode: backwards;
+    }
+}
+
+
+@keyframes reveal {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}

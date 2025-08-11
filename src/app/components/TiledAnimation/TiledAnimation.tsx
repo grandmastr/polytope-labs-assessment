@@ -1,55 +1,38 @@
 'use client';
-import React, { useId, useLayoutEffect, useRef, useState } from 'react';
-import { GridRaster as Raster } from '@/app/assets';
+import React, { useId } from 'react';
+import { clsx } from 'clsx';
 
+import { GridRaster } from '@/app/assets';
+import { useAdaptiveMotion, useTiledAnimation } from '@/app/hooks';
+
+/*
+ * Props for the TiledAnimation component.
+ */
 type Props = { className?: string };
 
+/*
+ * This component renders a tiled SVG animation that fills its container.
+ * To achieve the effect of repeated animation that scales with container size,
+ * it tiles the grid and scales it to the container
+ */
 const TiledAnimation: React.FC<Props> = ({ className }) => {
-  // Unique ids to avoid collisions if multiple instances mount
+  /*
+   * Generate unique IDs for both the pattern and symbol elements.
+   * This is necessary to ensure that the pattern can be referenced correctly,
+   * and also avoid DOM conflicts
+   */
   const patternId = useId();
   const symbolId = useId();
 
-  const svgRef = useRef<SVGSVGElement | null>(null);
-  const patternElRef = useRef<SVGPatternElement | null>(null);
-  const lastScaleRef = useRef(0);
-  const [ready, setReady] = useState(false);
+  const { ready, tileHeight, patternElRef, tileWidth, svgRef } =
+    useTiledAnimation();
 
-  const tileWidth = 1440;
-  const tileHeight = 588;
-
-  useLayoutEffect(() => {
-    if (!svgRef.current) return;
-    const el = svgRef.current;
-    const update = () => {
-      const containerWidth = el.clientWidth || 1;
-      const nextScale = containerWidth / tileWidth;
-      const prevScale = lastScaleRef.current;
-
-      if (prevScale && Math.abs(nextScale - prevScale) / prevScale < 0.01) {
-        setReady(true);
-        return;
-      }
-      lastScaleRef.current = nextScale;
-
-      requestAnimationFrame(() =>
-        patternElRef.current?.setAttribute(
-          'patternTransform',
-          `scale(${nextScale})`
-        )
-      );
-      setReady(true);
-    };
-    update();
-
-    const observer = new ResizeObserver(update);
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  useAdaptiveMotion<SVGSVGElement>({ root: svgRef });
 
   return (
     <svg
       ref={svgRef}
-      className={className ? `tiled-raster ${className}` : 'tiled-raster'}
+      className={clsx(`tiled-raster -z-10`, className || '')}
       style={{ visibility: ready ? 'visible' : 'hidden' }}
       width="100%"
       height="100%"
@@ -64,7 +47,7 @@ const TiledAnimation: React.FC<Props> = ({ className }) => {
           viewBox={`0 0 ${tileWidth} ${tileHeight}`}
           overflow="visible"
         >
-          <Raster />
+          <GridRaster />
         </symbol>
 
         <pattern

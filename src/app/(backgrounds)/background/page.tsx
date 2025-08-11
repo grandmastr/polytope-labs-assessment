@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function BackgroundImage() {
+export default function BackgroundImagePage() {
   return (
     <div
       style={{ backgroundImage: `url('/grid-raster.svg')` }}
