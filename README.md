@@ -5,8 +5,8 @@ This is a reproduction of the background animation from [app.hyperbridge.network
 
 ### Demos
 
-*   Pattern Animation - [https://polytope-labs-assessment.vercel.app/](https://polytope-labs-assessment.vercel.app/) and [https://polytope-labs-assessment.vercel.app/pattern](https://polytope-labs-assessment.vercel.app/pattern)
-*  Background Animation - [https://polytope-labs-assessment.vercel.app/background](https://polytope-labs-assessment.vercel.app/background)
+*   DOM Pattern Approach - [https://polytope-labs-assessment.vercel.app/](https://polytope-labs-assessment.vercel.app/) and [https://polytope-labs-assessment.vercel.app/pattern](https://polytope-labs-assessment.vercel.app/pattern)
+*   Background Image Approach - [https://polytope-labs-assessment.vercel.app/background](https://polytope-labs-assessment.vercel.app/background)
 
 ### GIFs
 
