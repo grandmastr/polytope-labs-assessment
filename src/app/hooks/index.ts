@@ -109,8 +109,14 @@ export const useAdaptiveMotion = <T extends Element = Element>({
     const mediaQueryList = matchMedia('(prefers-reduced-motion: reduce)');
     const apply = () => (mediaQueryList.matches ? pause() : resume());
 
+    const abortController = new AbortController();
+
     apply();
-    mediaQueryList.addEventListener('change', apply);
-    return () => mediaQueryList.removeEventListener('change', apply);
+    mediaQueryList.addEventListener('change', apply,  {
+      signal: abortController.signal
+    });
+    return () => {
+      abortController.abort();
+    }
   }, [root]);
 };
