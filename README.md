@@ -12,7 +12,7 @@ extra opmtimizations on top of that. I implemented it in _two ways:_
   Approach - [https://polytope-labs-assessment.vercel.app/background](https://polytope-labs-assessment.vercel.app/background)
 
 ### GIFs
-
-<p>
-    <img src="https://drive.google.com/uc?id=1jv5MpkFy52ILi0MZuV_noRQ_THYV0n0C" width="100%" alt="demo video for animation" />
+<p class="flex">
+    <img src="/public/demo.gif" alt="demo video for animation" />
+    <img src="/public/rj.gif" alt="demo video showing responsiveness" />
 </p>
