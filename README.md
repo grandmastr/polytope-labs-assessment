@@ -11,4 +11,4 @@ This is a reproduction of the background animation from [app.hyperbridge.network
 ### GIFs
 
   
-!\[Pattern Animation GIF\](https://drive.google.com/uc?id=1jv5MpkFy52ILi0MZuV_noRQ_THYV0n0C)
+![Pattern Animation GIF](https://drive.google.com/uc?id=1jv5MpkFy52ILi0MZuV_noRQ_THYV0n0C)
