@@ -1,17 +1,17 @@
 This is a reproduction of the background animation from [app.hyperbridge.network](https://app.hyperbridge.network), with
-extra opmtimizations on top of that. I implemented it in _two ways:_
+some optimizations on top of that. I implemented it in _two ways:_
 
-1. **SVG Pattern** - This uses inline SVG (direct insertion into the DOM) with `<pattern>`/`<use>` tiling.
-2. **Pure SVG + CSS** - This uses external SVG as a CSS background.
+1. **SVG Pattern** - inline SVG (direct insertion into the DOM) with `<pattern>`/`<use>` tiling.
+2. **Pure SVG + CSS** - external SVG as a CSS `background-image`.
 
 ### Demos
 
 * SVG Pattern Approach - [https://polytope-labs-assessment.vercel.app/](https://polytope-labs-assessment.vercel.app/)
   and [https://polytope-labs-assessment.vercel.app/pattern](https://polytope-labs-assessment.vercel.app/pattern)
-* Pure SVG + CSS Approach
-  Approach - [https://polytope-labs-assessment.vercel.app/background](https://polytope-labs-assessment.vercel.app/background)
+* Pure SVG + CSS Approach - [https://polytope-labs-assessment.vercel.app/background](https://polytope-labs-assessment.vercel.app/background)
 
-> They look identical, but the SVG Pattern Approach is more accessible and can be more performant especially when
+> They look identical visually, 
+> but the SVG Pattern Approach is more accessible and can be more performant especially when
 > working with animations with more moving parts.
 
 ### GIFs
@@ -24,8 +24,8 @@ extra opmtimizations on top of that. I implemented it in _two ways:_
 ### How the animation was built
 
 1. The raw animation was created using SVGs for base grid and paths for the animated beams/streaks to follow.
-2. The beams/streaks are then animated using SMIL (Synchronized Multimedia Integration Language)'s <animateTransform> to
-   beam/streak groups, which is used to
+2. The beams are then animated using SMIL (Synchronized Multimedia Integration Language)'s <animateTransform> to
+   beam groups, which is used to
    define the timing and layout of the animation.
    > CSS keyframes/[WAAPI](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) can be used as well. I
    explained the reason for my choice in the next section.
@@ -39,6 +39,7 @@ extra opmtimizations on top of that. I implemented it in _two ways:_
   for accessibility.
   Achieving a similar effect with CSS keyframes would require an asset swap.
 - Combining SMIL approach + inline SVG gives me reliable accessibility, and more control.
+> I chose for the guarantees of reduced-motion
 
 ### SVG Pattern Approach
 
@@ -64,3 +65,54 @@ showing that it runs at a stable 120 FPS keeping the time per frame to well unde
 The Pure SVG + CSS Approach uses an external SVG file as a CSS background image. This method is simpler and leverages
 CSS for positioning.
 > This approach is less flexible and offers less control over the animation compared to the SVG Pattern.
+
+
+### Project Structure
+
+public/
+├── grid-raster.svg <!-- SVG with streak animation -->
+
+src/
+├── app/
+│   ├── (backgrounds)/  <!-- Route group for background-related components -->
+│   │   ├── background/
+│   │   │   └── page.tsx  <!-- Pure CSS + SVG animation route -->
+│   │   ├── pattern/
+│   │   │   └── page.tsx  <!-- SVG Pattern route -->
+│   │   └── README.md
+│   ├── assets/
+│   │   ├── grid-raster.svg
+│   │   └── index.ts
+│   ├── components/
+│   │   ├── AnimatedText/  <!-- Animated Text component -->
+│   │   │   ├── AnimatedText.css
+│   │   │   ├── AnimatedText.tsx
+│   │   │   └── index.ts
+│   │   ├── TiledAnimation/  <!-- Tiled Animation component -->
+│   │   │   ├── index.ts
+│   │   │   └── TiledAnimation.tsx
+│   │   ├── README.md
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── hooks/
+│   │   ├── index.ts
+│   │   └── README.md
+│   ├── layout.tsx
+│   └── page.tsx
+
+
+### Getting started
+1. Install the dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+2. Start the development server:
+
+   ```bash
+   pnpm dev
+   ```
+   
+### Potential Improvements
+- **Performance(Pure SVG + CSS)**: Implement asset swap.
