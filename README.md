@@ -4,4 +4,11 @@ This is a reproduction of the background animation from [app.hyperbridge.network
 2.  **Alternative** - This uses external SVG as a CSS background.
 
 ### Demos
-![Pattern Animation](https://drive.google.com/file/d/1jv5MpkFy52ILi0MZuV_noRQ_THYV0n0C/view)
+
+*   Pattern Animation - [https://polytope-labs-assessment.vercel.app/](https://polytope-labs-assessment.vercel.app/) and [https://polytope-labs-assessment.vercel.app/pattern](https://polytope-labs-assessment.vercel.app/pattern)
+*  Background Animation - [https://polytope-labs-assessment.vercel.app/background](https://polytope-labs-assessment.vercel.app/background)
+
+### GIFs
+
+  
+!\[Pattern Animation GIF\](https://drive.google.com/uc?id=1jv5MpkFy52ILi0MZuV_noRQ_THYV0n0C)
