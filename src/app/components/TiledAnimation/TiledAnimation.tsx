@@ -32,8 +32,11 @@ const TiledAnimation: React.FC<Props> = ({ className }) => {
   return (
     <svg
       ref={svgRef}
-      className={clsx(`tiled-raster -z-10`, className || '')}
-      style={{ visibility: ready ? 'visible' : 'hidden' }}
+      className={clsx(
+        `tiled-raster -z-10 transition-opacity duration-150 ease-in`,
+        ready ? 'visible opacity-100' : 'invisible opacity-0',
+        className
+      )}
       width="100%"
       height="100%"
       preserveAspectRatio="none"
@@ -59,7 +62,7 @@ const TiledAnimation: React.FC<Props> = ({ className }) => {
           patternContentUnits="userSpaceOnUse"
           patternTransform={'scale(1)'}
         >
-          <use href={`#${symbolId}`} />
+          <use href={`#${symbolId}`} xlinkHref={`#${symbolId}`} />
         </pattern>
       </defs>
 
