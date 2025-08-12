@@ -33,7 +33,7 @@ const TiledAnimation: React.FC<Props> = ({ className }) => {
     <svg
       ref={svgRef}
       className={clsx(
-        `tiled-raster -z-10 transition-opacity duration-150 ease-in`,
+        'tiled-raster -z-10 transition-opacity duration-150 ease-in',
         ready ? 'visible opacity-100' : 'invisible opacity-0',
         className
       )}
