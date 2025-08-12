@@ -16,7 +16,7 @@ some optimizations on top of that. I implemented it in _two ways:_
 > but the SVG Pattern Approach is more accessible and can be more performant especially when
 > working with animations with more moving parts.
 
-<p class="flex">
+<p>
     <img src="/public/docs/demo.gif" alt="demo video for animation" />
 </p>
 
@@ -56,12 +56,12 @@ controlled more effectively.
 
 <div>
 <img src="https://fatal-tomato-dolphin.myfilebase.com/ipfs/QmPtAUXq9W29ZPWMiD7MYNPR3QFzJE7ghuHN3LRV6QhGKL" alt="image showing performance profile">
-This is a shot of the performance profile of the SVG Pattern Approach over 10s, 
+A shot of the performance profile of the SVG Pattern Approach over 10s, 
 showing that it runs at a stable 120 FPS keeping the time per frame to well under 8.33ms on a 120Hz display.</div>
 
 <div>
 <img src="/public/docs/reduced-motion.gif" alt="image showing performance profile">
-This is a screen recording of simulating the prefers-motion-reduced option being toggled and the behaviour of the implemented animation.</div>
+A screen recording of simulating the prefers-motion-reduced option being toggled and the behaviour of the implemented animation.</div>
 
 ### Pure SVG + CSS Approach
 
