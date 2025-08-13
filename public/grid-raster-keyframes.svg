@@ -1468,43 +1468,54 @@
             <feGaussianBlur stdDeviation="6.855"/>
         </filter>
     </defs>
-    <g>
+    <style>
+        @keyframes verticalSweepLong { 0% { transform: translate(0px, -264.6px); } 50% { transform: translate(0px,
+        588px); } 100% { transform: translate(0px, -264.6px); } }
+        @keyframes verticalSweepUp { 0% { transform: translate(0px, -117.6px); } 50% { transform: translate(0px,
+        -617.4px); } 100% { transform: translate(0px, -117.6px); } }
+        @keyframes horizontalSweepLTR { 0% { transform: translate(-72px, 0px); } 100% { transform: translate(1512px,
+        0px); } }
+        @keyframes horizontalSweepRTL { 0% { transform: translate(72px, 0px); } 100% { transform: translate(-1512px,
+        0px); } }
+        .g1 { animation: verticalSweepLong 12s linear infinite; animation-fill-mode: both; transform-box: fill-box;
+        will-change: transform; }
+        .g2 { animation: verticalSweepUp 15s linear infinite; animation-fill-mode: both; transform-box: fill-box;
+        will-change: transform; }
+        .g3 { animation: horizontalSweepLTR 7s linear infinite; animation-fill-mode: both; transform-box: fill-box;
+        will-change: transform; }
+        .g4 { animation: horizontalSweepRTL 8s linear infinite; animation-fill-mode: both; transform-box: fill-box;
+        will-change: transform; }
+        @media (prefers-reduced-motion: reduce) { .g1, .g2, .g3, .g4 { animation: none !important; } }
+    </style>
+    <g class="g1">
         <path stroke="url(#paint0_linear_25_96343)" stroke-width="1.371" d="M91.547 138v96.515"/>
         <g filter="url(#filter0_f_25_96343)">
             <path stroke="url(#paint1_linear_25_96343)" stroke-width="1.371" d="M88.547 119v96.515"/>
         </g>
-        <animateTransform attributeName="transform" type="translate" values="0 -264.6; 0 588; 0 -264.6" dur="12s"
-                          repeatCount="indefinite" keyTimes="0; 0.5; 1"
-                          calcMode="spline" keySplines=".645 .045 .355 1; .645 .045 .355 1"/>
+
     </g>
 
-    <g>
+    <g class="g2">
         <path stroke="url(#paint2_linear_25_96343)" stroke-width="1.371" d="M1168.55 436v96.515"/>
         <g filter="url(#filter1_f_25_96343)">
             <path stroke="url(#paint3_linear_25_96343)" stroke-width="1.371" d="M1167.55 417v96.515"/>
         </g>
-        <animateTransform attributeName="transform" type="translate" values="0 -117.6; 0 -617.4; 0 -117.6"
-                          keyTimes="0; 0.5; 1" dur="15s" repeatCount="indefinite"
-                          keySplines=".645 .045 .355 1"/>
+
     </g>
 
-    <g>
+    <g class="g3">
         <path stroke="url(#paint4_linear_25_96343)" stroke-width="1.371" d="M18 505.449h96.516"/>
         <g filter="url(#filter2_f_25_96343)">
             <path stroke="url(#paint5_linear_25_96343)" stroke-width="1.371" d="M-1 508.449h96.516"/>
         </g>
-        <animateTransform attributeName="transform" type="translate" values="-72 0; 1512 0" dur="7s"
-                          repeatCount="indefinite" keyTimes="0; 1"
-                          keySplines=".645 .045 .355 1"/>
+
     </g>
 
-    <g>
+    <g class="g4">
         <path stroke="url(#paint6_linear_25_96343)" stroke-width="1.371" d="M1335 415.449h96.52"/>
         <g filter="url(#filter3_f_25_96343)">
             <path stroke="url(#paint7_linear_25_96343)" stroke-width="1.371" d="M1316 418.449h96.52"/>
         </g>
-        <animateTransform attributeName="transform" type="translate" values="72 0; -1512 0" dur="8s"
-                          repeatCount="indefinite" keyTimes="0; 1"
-                          keySplines=".645 .045 .355 1"/>
+
     </g>
 </svg>

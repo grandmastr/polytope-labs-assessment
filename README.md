@@ -1,15 +1,15 @@
 [This](https://polytope-labs-assessment.vercel.app) is a reproduction of the background animation from [app.hyperbridge.network](https://app.hyperbridge.network), with
-some optimizations on top of that. I implemented it in _two ways:_
+some optimizations on top of that. It was implemented in _two ways:_
 
-1. **SVG Pattern** - inline SVG (direct insertion into the DOM) with `<pattern>`/`<use>` tiling.
-2. **Pure SVG + CSS** - external SVG as a CSS `background-image`.
+1. **SVG Pattern/Use** - inline SVG (direct insertion into the DOM) with `<pattern>`/`<use>` tiling + native SVG animation with SMIL.
+2. **Pure SVG + CSS Keyframes** - external SVG as a CSS `background-image`.
 
 ### Demos
 
 * SVG Pattern
   Approach - [https://polytope-labs-assessment.vercel.app/pattern](https://polytope-labs-assessment.vercel.app/)
   and [https://polytope-labs-assessment.vercel.app/pattern](https://polytope-labs-assessment.vercel.app/pattern)
-* Pure SVG + CSS
+* Pure SVG + CSS Keyframes
   Approach - [https://polytope-labs-assessment.vercel.app/background](https://polytope-labs-assessment.vercel.app/background)
 
 > They look identical visually,
@@ -22,12 +22,11 @@ some optimizations on top of that. I implemented it in _two ways:_
 
 ### How the animation was built
 
-1. The grid and beams were painted using SVGs.
-2. The beams were then animated by applying <animateTransform> to
-   beam groups, which is used to
+1. The grid and beams were created with SVGs elements.
+2. The beams were then animated by SMIL (Synchronized Multimedia Integration Language) <animateTransform> to
+   beam groups, which are used to
    define the timing and layout of the animation.
-   > CSS keyframes/[WAAPI](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) can be used as well. I
-   explained the reason for my choice in the next section.
+   > CSS keyframes/[WAAPI](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) can be used as well. The reason for this choice is explained in the next section.
 
 ### Why SMIL over CSS keyframes?
 
@@ -37,7 +36,8 @@ some optimizations on top of that. I implemented it in _two ways:_
   Achieving a similar effect with CSS keyframes would require an asset swap.
 - Combining SMIL approach + inline SVG gives me reliable accessibility, and more control.
 
-### SVG Pattern Approach
+
+### SVG Pattern/Use Approach
 
 The SVG Pattern Approach uses inline SVG with `<pattern>` and `<use>` elements to create a tiled animation.
 This allows for direct manipulation of the SVG elements, ensuring that the animation is part of the DOM and can be
@@ -63,9 +63,9 @@ showing that it runs at a stable 120 FPS keeping the time per frame to well unde
 <img src="/public/docs/reduced-motion.gif" alt="image showing performance profile">
 A screen recording of simulating the prefers-motion-reduced option being toggled and the behaviour of the implemented animation.</div>
 
-### Pure SVG + CSS Approach
+### Pure SVG + CSS Keyframes Approach
 
-The Pure SVG + CSS Approach uses an external SVG file as a CSS background image. This method is simpler and leverages
+The Pure SVG + CSS Keyframes Approach uses an external SVG file as a background image. This method is simpler and leverages
 CSS for positioning.
 > This approach is less flexible and offers less control over the animation compared to the SVG Pattern.
 
@@ -73,7 +73,7 @@ CSS for positioning.
 
 ```plaintext
 public/
-├── grid-raster.svg
+├── grid-raster-keyframes.svg
 
 src/
 ├── app/
@@ -120,4 +120,4 @@ src/
 
 ### Potential Improvements
 
-- **Performance(Pure SVG + CSS)**: Implement asset swap for reduced.
+- **Performance(Pure SVG + CSS Keyframes)**: Implement asset swap for reduced motion
